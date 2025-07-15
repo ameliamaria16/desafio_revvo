@@ -7,9 +7,33 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Desafio Revvo</h1>
-        <!-- Aqui pode entrar o menu ou logo, conforme o layout -->
+    <header class="topo">
+        <div class="logo">
+            <img src="https://res.cloudinary.com/dd1vq4hwj/image/upload/v1752577119/logo-leo_kd4e6d.png" alt="Logo LEO" class="logo-img">
+        </div>
+        <form class="busca">
+            <input type="text" placeholder="Pesquisar cursos...">
+            <button type="submit" class="btn-busca" aria-label="Buscar">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="9" cy="9" r="7" stroke="#bbb" stroke-width="2"/>
+                    <line x1="14.4142" y1="14" x2="18" y2="17.5858" stroke="#bbb" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </form>
+        <div class="perfil-box">
+            <div class="perfil">
+                <img src="assets/images/user.jpg" alt="Avatar do usuário" class="avatar">
+                <div class="perfil-info">
+                    <span class="bem-vindo">Seja bem-vindo</span>
+                    <span class="nome">John Doe</span>
+                </div>
+                <span class="seta-baixo">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 6L8 10L12 6" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </div>
+        </div>
     </header>
     <main>
         <section id="slideshow">

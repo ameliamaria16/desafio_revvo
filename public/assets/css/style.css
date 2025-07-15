@@ -36,6 +36,123 @@ main {
   /* Grid de cursos */
 }
 
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 32px 56px 28px 56px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  position: relative;
+  min-height: 88px;
+  gap: 32px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  min-width: 120px;
+  margin-right: 40px;
+}
+.logo-img {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+.busca {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 370px;
+  max-width: 60vw;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  background: #fafafa;
+  border-radius: 28px;
+  border: 1.5px solid #ededed;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 2px 12px 2px 0;
+  height: 48px;
+}
+.busca input {
+  width: 100%;
+  padding: 12px 18px 12px 22px;
+  border: none;
+  border-radius: 28px;
+  font-size: 1.08rem;
+  background: transparent;
+  outline: none;
+  color: #444;
+  font-weight: 400;
+}
+.btn-busca {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0 8px 0 4px;
+  display: flex;
+  align-items: center;
+}
+.btn-busca svg {
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+.perfil-box {
+  border: 1.5px solid #ededed;
+  border-radius: 28px;
+  padding: 4px 20px 4px 8px;
+  background: #fafafa;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  display: flex;
+  align-items: center;
+  margin-left: 40px;
+  min-width: 210px;
+  height: 48px;
+}
+.perfil {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
+}
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #eee;
+}
+.perfil-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 6px;
+  line-height: 1.1;
+}
+.bem-vindo {
+  font-size: 0.80rem;
+  color: #b0b0b0;
+  font-weight: 400;
+  margin-bottom: 1px;
+}
+.nome {
+  font-weight: bold;
+  color: #444;
+  font-size: 1.04rem;
+}
+.seta-baixo {
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+}
+.seta-baixo svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
 /* Modal */
 .modal {
   position: fixed;
@@ -66,12 +183,39 @@ main {
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   main {
     margin: 10px;
     padding: 10px;
   }
   .modal-content {
     padding: 16px 8px;
+  }
+  .topo {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px 8px 10px 8px;
+    gap: 10px;
+    min-height: unset;
+  }
+  .logo {
+    margin-right: 0;
+    font-size: 2rem;
+    text-align: left;
+  }
+  .busca {
+    position: static;
+    left: auto;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 10px 0;
+    height: 44px;
+  }
+  .perfil-box {
+    margin-left: 0;
+    justify-content: flex-start;
+    min-width: 0;
+    height: 44px;
   }
 } 
