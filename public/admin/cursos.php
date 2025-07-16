@@ -5,6 +5,7 @@
 
 require_once '../../src/config/conexao.php';
 require_once '../../src/models/Curso.php';
+require_once '../../src/models/Categoria.php';
 require_once '../../src/controllers/CursoController.php';
 
 $cursos = CursoController::buscarTodos();
@@ -102,9 +103,14 @@ if (isset($_GET['msg'])) {
                                 </td>
                                 <td>
                                     <strong><?php echo htmlspecialchars($curso['titulo']); ?></strong>
-                                    <?php if ($curso['categoria']): ?>
-                                        <br><small style="color: #666;"><?php echo htmlspecialchars($curso['categoria']); ?></small>
-                                    <?php endif; ?>
+                                    <?php 
+                                        if (!empty($curso['id_categoria'])) {
+                                            $cat = Categoria::buscarPorId($curso['id_categoria']);
+                                            if ($cat) {
+                                                echo '<br><small style="color: #666;">' . htmlspecialchars($cat['nome']) . '</small>';
+                                            }
+                                        }
+                                    ?>
                                 </td>
                                 <td>R$ <?php echo number_format($curso['preco'], 2, ',', '.'); ?></td>
                                 <td>

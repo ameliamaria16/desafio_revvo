@@ -44,6 +44,14 @@ $totalSlides = count(Slideshow::buscarTodos());
                 </div>
             </div>
 
+            <!-- Bloco institucional sobre cursos -->
+            <div class="info-curso-admin" style="background: #f4f8fb; border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 2px 8px #0001; text-align: center;">
+                <h2 style="margin-bottom: 0.5rem; color: #2c3e50; font-size: 1.5rem;">GERENCIE SEUS CURSOS COM FACILIDADE</h2>
+                <p style="color: #555; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+                    Aqui você pode cadastrar, editar e acompanhar todos os cursos disponíveis na plataforma. Mantenha o catálogo sempre atualizado e ofereça a melhor experiência para seus alunos. Utilize as ações rápidas para agilizar o gerenciamento e garantir que seus cursos estejam sempre em destaque!
+                </p>
+            </div>
+
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-icon">

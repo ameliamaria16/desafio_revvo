@@ -20,14 +20,14 @@ class Curso {
     }
     
     // Buscar cursos por categoria
-    public static function buscarPorCategoria($categoria) {
-        $sql = "SELECT * FROM cursos WHERE categoria = ? AND status = 'ativo' ORDER BY titulo";
-        return buscarTodos($sql, [$categoria]);
+    public static function buscarPorCategoria($id_categoria) {
+        $sql = "SELECT * FROM cursos WHERE id_categoria = ? AND status = 'ativo' ORDER BY titulo";
+        return buscarTodos($sql, [$id_categoria]);
     }
     
     // Criar novo curso
     public static function criar($dados) {
-        $sql = "INSERT INTO cursos (titulo, descricao, imagem, preco, duracao, categoria, link) 
+        $sql = "INSERT INTO cursos (titulo, descricao, imagem, preco, duracao, id_categoria, link) 
                 VALUES (?, ?, ?, ?, ?, ?, ?)";
         return inserir($sql, [
             $dados['titulo'],
@@ -35,7 +35,7 @@ class Curso {
             $dados['imagem'],
             $dados['preco'],
             $dados['duracao'],
-            $dados['categoria'],
+            $dados['id_categoria'],
             $dados['link'] ?? null
         ]);
     }
@@ -44,7 +44,7 @@ class Curso {
     public static function atualizar($id, $dados) {
         $sql = "UPDATE cursos SET 
                 titulo = ?, descricao = ?, imagem = ?, 
-                preco = ?, duracao = ?, categoria = ?, link = ?
+                preco = ?, duracao = ?, id_categoria = ?, link = ?
                 WHERE id = ?";
         return atualizar($sql, [
             $dados['titulo'],
@@ -52,7 +52,7 @@ class Curso {
             $dados['imagem'],
             $dados['preco'],
             $dados['duracao'],
-            $dados['categoria'],
+            $dados['id_categoria'],
             $dados['link'] ?? null,
             $id
         ]);
@@ -68,6 +68,12 @@ class Curso {
     public static function buscarCategorias() {
         $sql = "SELECT DISTINCT categoria FROM cursos WHERE status = 'ativo' ORDER BY categoria";
         return buscarTodos($sql);
+    }
+
+    // Buscar curso por nome (para validar duplicidade)
+    public static function buscarPorNome($titulo) {
+        $sql = "SELECT * FROM cursos WHERE titulo = ?";
+        return buscarUm($sql, [$titulo]);
     }
 }
 ?> 

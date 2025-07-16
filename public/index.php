@@ -138,11 +138,9 @@ $slides = Slideshow::buscarTodos();
             <span class="close">&times;</span>
             <img src="https://res.cloudinary.com/dd1vq4hwj/image/upload/v1752620721/Captura_de_tela_2025-07-15_200517_nkisd1.png" 
                  alt="Ilustração" class="modal-ilustracao">
-            <h2 class="modal-titulo">EGESTAS TORTOR VULPUTATE</h2>
+            <h2 class="modal-titulo">Painel de Cursos</h2>
             <p class="modal-desc">
-                Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.<br>
-                Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui. Cras
-            </p>
+            Aqui você pode cadastrar, editar e acompanhar todos os cursos disponíveis na plataforma. Mantenha o catálogo sempre atualizado e ofereça a melhor experiência para seus alunos. Utilize as ações rápidas para agilizar o gerenciamento e garantir que seus cursos estejam sempre em destaque!</p>
             <button class="modal-btn">INSCREVA-SE</button>
         </div>
     </div>
