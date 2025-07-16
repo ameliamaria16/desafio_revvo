@@ -2,10 +2,8 @@
 window.onload = function() {
     const modal = document.getElementById('modal-primeiro-acesso');
     const closeBtn = document.querySelector('.modal .close');
-    if (!localStorage.getItem('modalAcessado')) {
-        modal.style.display = 'flex';
-        localStorage.setItem('modalAcessado', 'true');
-    }
+    modal.style.display = 'flex'; // Sempre mostra a modal
+
     if (closeBtn) {
         closeBtn.onclick = function() {
             modal.style.display = 'none';
@@ -82,3 +80,4 @@ const cursos = [
   }
   
   document.addEventListener('DOMContentLoaded', renderizarCursos);
+
