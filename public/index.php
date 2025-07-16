@@ -1,7 +1,7 @@
 <?php
 /**
  * Página Principal - Desafio Revvo
- * Integração com banco de dados
+ * DADOS 100% DINÂMICOS DO BANCO
  */
 
 require_once '../src/config/conexao.php';
@@ -57,116 +57,72 @@ $slides = Slideshow::buscarTodos();
     </header>
 
     <main>
-        <!-- CARROSSEL - LARGURA TOTAL -->
+        <!-- CARROSSEL DINÂMICO -->
         <section id="slideshow" aria-label="Destaques">
             <div class="carousel">
                 <button class="carousel-arrow left" aria-label="Anterior">&#10094;</button>
 
-                <div class="carousel-slide active">
-                    <img src="https://res.cloudinary.com/dd1vq4hwj/image/upload/v1752618609/inep_jwkerm.jpg" alt="Primeira imagem do carrossel">
-                    <div class="carousel-caption">
-                        <h2>LOREM IPSUM</h2>
-                        <p>Primeiro slide do carrossel. Texto de exemplo para descrever o curso ou destaque.</p>
-                        <a href="#" class="carousel-btn">VER CURSO</a>
+                <?php if (!empty($slides)): ?>
+                    <?php foreach ($slides as $index => $slide): ?>
+                        <div class="carousel-slide <?php echo $index === 0 ? 'active' : ''; ?>">
+                            <img src="assets/images/<?php echo $slide['imagem']; ?>" alt="<?php echo $slide['titulo']; ?>">
+                            <div class="carousel-caption">
+                                <h2><?php echo $slide['titulo']; ?></h2>
+                                <p><?php echo $slide['descricao']; ?></p>
+                                <a href="<?php echo $slide['link_botao']; ?>" class="carousel-btn"><?php echo $slide['texto_botao']; ?></a>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <!-- Slide padrão se não houver dados -->
+                    <div class="carousel-slide active">
+                        <img src="https://res.cloudinary.com/dd1vq4hwj/image/upload/v1752618609/inep_jwkerm.jpg" alt="Slide padrão">
+                        <div class="carousel-caption">
+                            <h2>BEM-VINDO À REVVO</h2>
+                            <p>Adicione slides no painel administrativo para personalizar o carrossel.</p>
+                            <a href="admin/" class="carousel-btn">ADMINISTRAR</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="carousel-slide">
-                    <img src="https://res.cloudinary.com/dd1vq4hwj/image/upload/v1752618609/tecnicas-de-estudo-1536x512_iuqyqd.jpg" alt="Segunda imagem do carrossel">
-                    <div class="carousel-caption">
-                        <h2>SEGUNDO SLIDE</h2>
-                        <p>Segundo slide do carrossel. Outro texto de exemplo para destacar um curso.</p>
-                        <a href="#" class="carousel-btn">VER CURSO</a>
-                    </div>
-                </div>
-
-                <div class="carousel-slide">
-                    <img src="https://res.cloudinary.com/dd1vq4hwj/image/upload/v1752618663/images_f7pdra.jpg" alt="Terceira imagem do carrossel">
-                    <div class="carousel-caption">
-                        <h2>TERCEIRO SLIDE</h2>
-                        <p>Terceiro slide do carrossel. Mais um texto de exemplo para o destaque.</p>
-                        <a href="#" class="carousel-btn">VER CURSO</a>
-                    </div>
-                </div>
+                <?php endif; ?>
 
                 <button class="carousel-arrow right" aria-label="Próximo">&#10095;</button>
                 
                 <div class="carousel-dots">
-                    <button class="dot active" aria-label="Slide 1"></button>
-                    <button class="dot" aria-label="Slide 2"></button>
-                    <button class="dot" aria-label="Slide 3"></button>
+                    <?php if (!empty($slides)): ?>
+                        <?php foreach ($slides as $index => $slide): ?>
+                            <button class="dot <?php echo $index === 0 ? 'active' : ''; ?>" aria-label="Slide <?php echo $index + 1; ?>"></button>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <button class="dot active" aria-label="Slide 1"></button>
+                    <?php endif; ?>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO DE CURSOS - CONTAINER CENTRAL -->
+        <!-- SEÇÃO DE CURSOS 100% DINÂMICA -->
         <section id="cursos">
             <h2>MEUS CURSOS</h2>
             <div class="cursos-grid" id="cursosGrid">
-                <div class="curso-card">
-                    <img src="https://res.cloudinary.com/dd1vq4hwj/image/upload/v1752618663/images_f7pdra.jpg" alt="PELLENTESQUE MALESUADA">
-                    <div class="curso-info">
-                        <h3>PELLENTESQUE MALESUADA</h3>
-                        <p>Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
-                        <a href="#" class="curso-btn">VER CURSO</a>
-                    </div>
-                </div>
+                <?php if (!empty($cursos)): ?>
+                    <!-- EXIBIR CURSOS DO BANCO -->
+                    <?php foreach ($cursos as $curso): ?>
+                        <div class="curso-card">
+                            <?php if (!empty($curso['imagem'])): ?>
+                                <img src="assets/images/<?php echo $curso['imagem']; ?>" alt="<?php echo $curso['titulo']; ?>">
+                            <?php else: ?>
+                                <img src="https://res.cloudinary.com/dd1vq4hwj/image/upload/v1752618663/images_f7pdra.jpg" alt="Imagem padrão">
+                            <?php endif; ?>
+                            <div class="curso-info">
+                                <h3><?php echo $curso['titulo']; ?></h3>
+                                <p><?php echo $curso['descricao']; ?></p>
+                                <a href="<?php echo !empty($curso['link']) ? $curso['link'] : '#'; ?>" class="curso-btn" target="_blank">VER CURSO</a>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
 
-                <div class="curso-card">
-                    <img src="https://res.cloudinary.com/dd1vq4hwj/image/upload/v1752618609/tecnicas-de-estudo-1536x512_iuqyqd.jpg" alt="PELLENTESQUE MALESUADA">
-                    <div class="curso-info">
-                        <h3>PELLENTESQUE MALESUADA</h3>
-                        <p>Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
-                        <a href="#" class="curso-btn">VER CURSO</a>
-                    </div>
-                </div>
-
-                <div class="curso-card">
-                    <img src="https://res.cloudinary.com/dd1vq4hwj/image/upload/v1752618609/inep_jwkerm.jpg" alt="PELLENTESQUE MALESUADA">
-                    <div class="curso-info">
-                        <h3>PELLENTESQUE MALESUADA</h3>
-                        <p>Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
-                        <a href="#" class="curso-btn">VER CURSO</a>
-                    </div>
-                </div>
-
-                <div class="curso-card">
-                    <img src="https://res.cloudinary.com/dd1vq4hwj/image/upload/v1752618663/images_f7pdra.jpg" alt="PELLENTESQUE MALESUADA">
-                    <div class="curso-info">
-                        <h3>PELLENTESQUE MALESUADA</h3>
-                        <p>Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
-                        <a href="#" class="curso-btn">VER CURSO</a>
-                    </div>
-                </div>
-
-                <div class="curso-card">
-                    <img src="https://res.cloudinary.com/dd1vq4hwj/image/upload/v1752618609/tecnicas-de-estudo-1536x512_iuqyqd.jpg" alt="PELLENTESQUE MALESUADA">
-                    <div class="curso-info">
-                        <h3>PELLENTESQUE MALESUADA</h3>
-                        <p>Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
-                        <a href="#" class="curso-btn">VER CURSO</a>
-                    </div>
-                </div>
-
-                <div class="curso-card">
-                    <img src="https://res.cloudinary.com/dd1vq4hwj/image/upload/v1752618609/inep_jwkerm.jpg" alt="PELLENTESQUE MALESUADA">
-                    <div class="curso-info">
-                        <h3>PELLENTESQUE MALESUADA</h3>
-                        <p>Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
-                        <a href="#" class="curso-btn">VER CURSO</a>
-                    </div>
-                </div>
-
-                <div class="curso-card">
-                    <img src="https://res.cloudinary.com/dd1vq4hwj/image/upload/v1752618663/images_f7pdra.jpg" alt="PELLENTESQUE MALESUADA">
-                    <div class="curso-info">
-                        <h3>PELLENTESQUE MALESUADA</h3>
-                        <p>Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
-                        <a href="#" class="curso-btn">VER CURSO</a>
-                    </div>
-                </div>
-
-                <div class="curso-card add-card">
+                <!-- CARD ADICIONAR CURSO - SEMPRE VISÍVEL -->
+                <div class="curso-card add-card" onclick="window.location.href='admin/cursos-novo.php'">
                     <div class="add-curso-content">
                         <img src="assets/images/add-icon.png" alt="Adicionar curso" class="add-icon">
                         <span>ADICIONAR<br>CURSO</span>

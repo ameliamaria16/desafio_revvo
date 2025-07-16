@@ -759,3 +759,77 @@ main {
     padding: 8px 2vw;
   }
 }
+
+/* =====================================================
+   ESTADO VAZIO - QUANDO NÃO HÁ CURSOS
+   ===================================================== */
+
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+}
+
+.empty-content h3 {
+    color: #6c757d;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.empty-content p {
+    color: #adb5bd;
+    margin-bottom: 2rem;
+}
+
+.empty-content .curso-btn {
+    background: #007bff;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.empty-content .curso-btn:hover {
+    background: #0056b3;
+}
+
+/* Card adicionar curso clicável */
+.add-card {
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.add-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.add-curso-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #6c757d;
+    font-weight: 600;
+    text-align: center;
+}
+
+.add-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+    opacity: 0.7;
+}
+
+.add-card:hover .add-curso-content {
+    color: #007bff;
+}
+
+.add-card:hover .add-icon {
+    opacity: 1;
+}

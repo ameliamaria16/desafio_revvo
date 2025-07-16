@@ -27,15 +27,16 @@ class Curso {
     
     // Criar novo curso
     public static function criar($dados) {
-        $sql = "INSERT INTO cursos (titulo, descricao, imagem, preco, duracao, categoria) 
-                VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO cursos (titulo, descricao, imagem, preco, duracao, categoria, link) 
+                VALUES (?, ?, ?, ?, ?, ?, ?)";
         return inserir($sql, [
             $dados['titulo'],
             $dados['descricao'],
             $dados['imagem'],
             $dados['preco'],
             $dados['duracao'],
-            $dados['categoria']
+            $dados['categoria'],
+            $dados['link'] ?? null
         ]);
     }
     
@@ -43,7 +44,7 @@ class Curso {
     public static function atualizar($id, $dados) {
         $sql = "UPDATE cursos SET 
                 titulo = ?, descricao = ?, imagem = ?, 
-                preco = ?, duracao = ?, categoria = ? 
+                preco = ?, duracao = ?, categoria = ?, link = ?
                 WHERE id = ?";
         return atualizar($sql, [
             $dados['titulo'],
@@ -52,14 +53,15 @@ class Curso {
             $dados['preco'],
             $dados['duracao'],
             $dados['categoria'],
+            $dados['link'] ?? null,
             $id
         ]);
     }
     
-    // Deletar curso (soft delete)
+    // Deletar curso (delete real)
     public static function deletar($id) {
-        $sql = "UPDATE cursos SET status = 'inativo' WHERE id = ?";
-        return atualizar($sql, [$id]);
+        $sql = "DELETE FROM cursos WHERE id = ?";
+        return deletar($sql, [$id]);
     }
     
     // Buscar categorias disponíveis

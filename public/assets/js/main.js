@@ -49,35 +49,5 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   showSlide(0);
-}); 
-
-const cursos = [
-    {
-      titulo: "Pellentesque malesuada",
-      descricao: "Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo.",
-      imagem: "https://res.cloudinary.com/dd1vq4hwj/image/upload/v1752618663/images_f7pdra.jpg",
-      link: "#"
-    },
-  ];
-  
-  function renderizarCursos() {
-    const grid = document.getElementById('cursosGrid');
-    grid.querySelectorAll('.curso-card:not(.add-card)').forEach(card => card.remove());
-  
-    cursos.forEach(curso => {
-      const card = document.createElement('div');
-      card.className = 'curso-card';
-      card.innerHTML = `
-        <img src="${curso.imagem}" alt="${curso.titulo}">
-        <div class="curso-info">
-          <h3>${curso.titulo}</h3>
-          <p>${curso.descricao}</p>
-          <a href="${curso.link}" class="curso-btn">Ver curso</a>
-        </div>
-      `;
-      grid.insertBefore(card, grid.querySelector('.add-card'));
-    });
-  }
-  
-  document.addEventListener('DOMContentLoaded', renderizarCursos);
+});
 
