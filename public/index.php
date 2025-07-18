@@ -30,8 +30,8 @@ $slides = Slideshow::buscarTodos();
             <img src="https://res.cloudinary.com/dd1vq4hwj/image/upload/v1752577119/logo-leo_kd4e6d.png" alt="Logo Revvo" class="logo-img">
         </div>
         <div class="header-right">
-            <form class="busca" role="search">
-                <input type="text" placeholder="Pesquisar cursos..." aria-label="Pesquisar cursos">
+            <form class="busca" id="form-busca" role="search">
+                <input type="text" id="input-busca" placeholder="Pesquisar cursos..." aria-label="Pesquisar cursos">
                 <button type="submit" class="btn-busca" aria-label="Buscar">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="9" cy="9" r="7" stroke="#bbb" stroke-width="2" />
@@ -41,7 +41,7 @@ $slides = Slideshow::buscarTodos();
             </form>
             <div class="perfil-box">
                 <div class="perfil">
-                    <img src="assets/images/user.jpg" alt="Avatar do usuário" class="avatar">
+                    <img src="https://res.cloudinary.com/dd1vq4hwj/image/upload/v1752835677/retrato-de-homem-branco-isolado_53876-40306_cubsa0.avif" alt="Avatar do usuário" class="avatar">
                     <div class="perfil-info">
                         <span class="bem-vindo">Seja bem-vindo</span>
                         <span class="nome">John Doe</span>
@@ -69,7 +69,7 @@ $slides = Slideshow::buscarTodos();
                             <div class="carousel-caption">
                                 <h2><?php echo $slide['titulo']; ?></h2>
                                 <p><?php echo $slide['descricao']; ?></p>
-                                <a href="<?php echo $slide['link_botao']; ?>" class="carousel-btn"><?php echo $slide['texto_botao']; ?></a>
+                                <a href="<?php echo $slide['link_botao']; ?>" class="carousel-btn" target="_blank" rel="noopener"><?php echo $slide['texto_botao']; ?></a>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -115,7 +115,7 @@ $slides = Slideshow::buscarTodos();
                             <div class="curso-info">
                                 <h3><?php echo $curso['titulo']; ?></h3>
                                 <p><?php echo $curso['descricao']; ?></p>
-                                <a href="<?php echo !empty($curso['link']) ? $curso['link'] : '#'; ?>" class="curso-btn" target="_blank">VER CURSO</a>
+                                <a href="<?php echo !empty($curso['link']) ? $curso['link'] : '#'; ?>" class="curso-btn" target="_blank" rel="noopener">VER CURSO</a>
                             </div>
                         </div>
                     <?php endforeach; ?>
