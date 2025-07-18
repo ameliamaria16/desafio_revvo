@@ -25,6 +25,10 @@ Este projeto é uma aplicação web desenvolvida em PHP para gerenciamento de cu
 
 1. **Clone o repositório e acesse a pasta do projeto:**
 
+  ```bash
+   git clone https://github.com/ameliamaria16/desafio_revvo.git
+   cd desafio_revvo
+   ```
 
 2. **Crie o banco de dados:**
 
